@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADS LLC | Abatement &amp; Demolition Specialists &mdash; Asbestos, Microbial, Lead &amp; Demolition | Augusta, ME</title>
+<meta name="description" content="ADS LLC (Abatement &amp; Demolition Specialists) is a Maine-based, family-owned contractor handling asbestos abatement, microbial (mold) remediation, lead abatement, and general demolition across Maine and parts of New Hampshire and Vermont. 35+ years of hands-on experience. Call (207) 838-6848 for a free assessment.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main" class="visually-hidden">Skip to content</a>
+<div class="stripe-bar" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="brand-mark-chip"><img class="brand-mark" src="images/logo-mark.png" alt="ADS LLC logo"></span>
+      <span class="brand-text">ADS LLC<small>Abatement &amp; Demolition Specialists &middot; Augusta, ME</small></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#about">Why Us</a>
+      <a href="#area">Service Area</a>
+      <a href="#quote">Get a Quote</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="header-phone" href="tel:+12078386848">
+        <span>Call for a free assessment</span>
+        <strong>(207) 838-6848</strong>
+      </a>
+      <a href="#quote" class="btn btn-orange">Get a Quote</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="#services">Services</a>
+    <a href="#about">Why Us</a>
+    <a href="#area">Service Area</a>
+    <a href="#quote">Get a Quote</a>
+    <a href="tel:+12078386848">Call (207) 838-6848</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="padding: 0;">
+    <div class="hero-photo" aria-hidden="true"></div>
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <div class="hero-eyebrow">Augusta, Maine &middot; A Proud Maine-Based Company</div>
+        <h1>35 years removing<br>what's <em>dangerous</em>&mdash;<br>cleanly and by the book</h1>
+        <p class="hero-sub">ADS LLC handles asbestos abatement, microbial (mold) remediation, lead abatement, and general demolition for homes, businesses, and municipalities across Maine and into parts of New Hampshire and Vermont. Family owned and operated &mdash; Russell and Jocelyn Harvey run every job personally.</p>
+        <div class="hero-actions">
+          <a href="#quote" class="btn btn-orange">Get a Free Assessment</a>
+          <a href="tel:+12078386848" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 2h3l1.5 4-2 1.5a10 10 0 0 0 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2C8 17 1 10 1 4c0-1 1-2 3-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            (207) 838-6848
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div><strong>35+ Years</strong><span>Hands-on experience</span></div>
+          <div><strong>DEP Licensed</strong><span>Contractor Lic. #CF-0259</span></div>
+          <div><strong>ME &amp; NH</strong><span>Licensed to work both states</span></div>
+        </div>
+      </div>
+
+      <div class="quote-card" id="quote">
+        <h2>Get a Free Assessment</h2>
+        <p class="quote-sub">Tell us about the property and the project. We'll call or text back with next steps.</p>
+        <form id="quoteForm" novalidate>
+          <div class="honeypot" aria-hidden="true">
+            <label for="company_website">Leave this field empty</label>
+            <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            </div>
+            <div class="field">
+              <label for="email">Email (optional)</label>
+              <input type="email" id="email" name="email" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="address">Property address</label>
+            <input type="text" id="address" name="address" autocomplete="street-address" placeholder="Street, Town, ME or NH">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="property_type">Property type</label>
+              <select id="property_type" name="property_type">
+                <option value="">Select one</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="municipal">Municipal / Government</option>
+                <option value="not-sure">Not sure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="project_type">Project type</label>
+              <select id="project_type" name="project_type">
+                <option value="">Select one</option>
+                <option value="asbestos-abatement">Asbestos</option>
+                <option value="microbial-remediation">Microbial (Mold)</option>
+                <option value="lead-abatement">Lead</option>
+                <option value="demolition">General Demolition</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">Not sure yet</option>
+              <option value="asap">As soon as possible</option>
+              <option value="30-days">Within 30 days</option>
+              <option value="planning">Just getting quotes / planning ahead</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Anything else we should know? (optional)</label>
+            <textarea id="message" name="message" placeholder="e.g. suspected asbestos siding, water damage/mold, a building coming down..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-char btn-block" id="quoteSubmit">Request My Assessment</button>
+          <p class="field-hint">Prefer to talk? Call or text <a href="tel:+12078386848" style="color:var(--char-dark); font-weight:700;">(207) 838-6848</a>.</p>
+
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-eyebrow">Who's Doing The Work</div>
+        <h2>Family owned.<br>35 years in the field.</h2>
+        <p style="margin-top:18px; font-size:1.05rem;">ADS LLC &mdash; Abatement &amp; Demolition Specialists &mdash; is a Maine company run by President Russell Harvey, who has spent over 35 years hands-on in asbestos removal, and Operations Manager Jocelyn Harvey. This isn't a call center dispatching subcontractors: it's a small, licensed Maine operation that shows up, does the work correctly, and hauls the material away itself.</p>
+        <ul class="about-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Owner-operated, every job
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Residential, commercial &amp; municipal properties
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Own hauling &amp; disposal equipment &mdash; nothing left half-finished
+          </li>
+        </ul>
+      </div>
+      <figure class="about-photo">
+        <img src="images/about-ceiling.jpg" alt="ADS crew removing a popcorn ceiling in a sealed containment area">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ LICENSED & VERIFIED ============ -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Licensed &amp; Verified</div>
+        <h2>Not just a truck and a name</h2>
+      </div>
+      <div class="credentials-grid">
+        <div class="credential-item">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Maine DEP Licensed Contractor</strong>Asbestos Abatement Lic. #CF-0259</span>
+        </div>
+        <div class="credential-item">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Maine DEP Licensed Consultant</strong>Inspections &amp; project design</span>
+        </div>
+        <div class="credential-item">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Registered in New Hampshire</strong>On file with the State of NH</span>
+        </div>
+        <div class="credential-item">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Own hauling &amp; disposal equipment</strong>USDOT #4578285</span>
+        </div>
+        <div class="credential-item">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>35+ years hands-on experience</strong>Same owner on-site since day one</span>
+        </div>
+        <div class="credential-item">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Maine-based, family owned</strong>Not a national franchise or call center</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">What We Do</div>
+        <h2>Services</h2>
+        <p>Four things we handle, done right and hauled away properly.</p>
+      </div>
+
+      <div class="service-list">
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none"><path d="M24 6 L42 38 H6 Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 18v10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="32.5" r="1.6" fill="currentColor"/></svg>
+          <h3>Asbestos</h3>
+          <p>Testing, containment, and full removal &mdash; handled to Maine DEP standards.</p>
+          <span class="service-tag">DEP Licensed</span>
+        </div>
+
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none"><path d="M24 8c6 8 10 14 10 20a10 10 0 0 1-20 0c0-6 4-12 10-20z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
+          <h3>Microbial (Mold)</h3>
+          <p>Removal and remediation of mold-damaged material after water intrusion or storm damage.</p>
+          <span class="service-tag">Residential &amp; Commercial</span>
+        </div>
+
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none"><rect x="10" y="10" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2.2"/><path d="M18 24h12M24 18v12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <h3>Lead</h3>
+          <p>Safe removal of lead paint and lead-contaminated materials from older properties.</p>
+          <span class="service-tag">Residential &amp; Commercial</span>
+        </div>
+
+        <div class="service-row">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none"><path d="M6 40h36M10 40l4-18h8l-3 18M27 40l4-24h7l-3 24" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <h3>General Demolition</h3>
+          <p>Full and selective demolition, with debris hauled off using our own equipment.</p>
+          <span class="service-tag">Residential, Commercial &amp; Municipal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECENT WORK ============ -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">From The Job Site</div>
+        <h2>Recent work</h2>
+      </div>
+      <div class="work-grid">
+        <figure class="work-item">
+          <img src="images/work-pipe-wrap.jpg" alt="Crew removing asbestos pipe insulation inside a sealed containment area">
+        </figure>
+        <figure class="work-item">
+          <img src="images/work-restricted-zone.jpg" alt="Sealed asbestos work area with containment barrier, negative air machine, and labeled waste bags">
+        </figure>
+        <figure class="work-item">
+          <img src="images/work-waste-bag.jpg" alt="Technician bagging asbestos waste inside a plastic containment tent">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="how-it-works" class="section-dark">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Getting Started</div>
+        <h2>How it works</h2>
+        <p>Four steps from "what is this material?" to a clean, cleared site.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Reach out</h3>
+          <p>Fill out the assessment form or call/text (207) 838-6848.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>We assess</h3>
+          <p>We look at the property, identify what's actually there, and scope the work.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>We notify &amp; schedule</h3>
+          <p>Required DEP notifications get filed and the work gets scheduled.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <h3>We remove &amp; haul away</h3>
+          <p>Safe removal, proper disposal, and a site that's ready for what's next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE AREA ============ -->
+  <section id="area">
+    <div class="wrap area-grid">
+      <div>
+        <div class="section-eyebrow">Where We Work</div>
+        <h2>Serving Maine &amp; parts of New Hampshire and Vermont</h2>
+        <p style="margin-top:14px;">Based in Augusta, we work on properties throughout Maine and into parts of New Hampshire and Vermont. Not sure if your property's in range? Call us &mdash; if we can't help, we'll try to point you to someone who can.</p>
+      </div>
+      <ul class="area-list">
+        <li><strong>Maine</strong> &mdash; based in Augusta, serving the Kennebec Valley and beyond</li>
+        <li><strong>New Hampshire</strong> &mdash; registered &amp; licensed to work in parts of the state</li>
+        <li><strong>Vermont</strong> &mdash; taking on select projects near the border, by request</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAR ============ -->
+  <section class="section-dark" style="padding: 0;">
+    <div class="trust-bar">
+      <div class="trust-item"><strong>35+</strong><span>Years of hands-on experience</span></div>
+      <div class="trust-item"><strong>2</strong><span>Maine DEP licenses &mdash; contractor &amp; consultant</span></div>
+      <div class="trust-item"><strong>ME + NH</strong><span>Licensed to work both states</span></div>
+      <div class="trust-item"><strong>1</strong><span>Family-run crew, on every job</span></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Know what you're<br>dealing with. Get it removed right.</h2>
+      <p>Get a free assessment today &mdash; most properties get a call back within one business day.</p>
+      <div class="cta-actions">
+        <a href="#quote" class="btn btn-char">Get a Free Assessment</a>
+        <a href="tel:+12078386848" class="btn btn-outline">Call (207) 838-6848</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-brand">
+          <span class="brand-mark-chip brand-mark-chip-sm"><img class="brand-mark" src="images/logo-mark.png" alt="" width="34"></span>
+          <span class="brand-text">ADS LLC</span>
+        </a>
+        <p>Abatement &amp; Demolition Specialists, LLC &mdash; a Maine-based, family-owned contractor serving Maine and parts of New Hampshire and Vermont.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">Why Us</a></li>
+          <li><a href="#area">Service Area</a></li>
+          <li><a href="#quote">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+12078386848">(207) 838-6848</a></li>
+          <li><a href="mailto:rusmic1437@icloud.com">rusmic1437@icloud.com</a></li>
+          <li>4 Burns Road, Augusta, ME 04330</li>
+          <li>Contractor Lic. #CF-0259</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Abatement &amp; Demolition Specialists, LLC. All rights reserved.</span>
+      <span>Augusta, Maine</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-call-bar">
+  <a class="call" href="tel:+12078386848">Call Now</a>
+  <a class="quote" href="#quote">Get a Quote</a>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
