@@ -2,151 +2,166 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Leads &mdash; Abatement and Demolition Specialist Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leads &mdash; Abatement &amp; Demolition Specialists Admin</title>
-<link rel="icon" href="data:,">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 <style>
-  :root {
-    --char: #1A1B1D; --char-dark: #101112; --steel: #3D434A; --orange: #E35C0F;
-    --concrete: #EFEDE7; --ink: #1C1C1A; --line: #ddd6c4;
+  body { background: var(--off-white); }
+  .admin-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 18px 0;
   }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--concrete); color: var(--ink); }
-  header { background: var(--char); color: var(--concrete); padding: 20px 28px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 12px; }
-  header h1 { font-size: 1.2rem; margin: 0; }
-  header a.export { color: var(--concrete); background: var(--orange); padding: 8px 14px; border-radius: 4px; text-decoration:none; font-size:0.9rem; font-weight:600; }
-  main { padding: 24px 28px; max-width: 1300px; margin: 0 auto; }
-  .stats { display:flex; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
-  .stat { background:#fff; border:1px solid var(--line); border-radius:6px; padding:16px 22px; min-width:140px; }
-  .stat strong { display:block; font-size:1.8rem; color: var(--orange); }
-  .stat span { font-size:0.82rem; color:#666; }
-  .filters { margin-bottom: 16px; display:flex; gap:8px; }
-  .filters button { border:1px solid var(--line); background:#fff; padding:6px 14px; border-radius:20px; cursor:pointer; font-size:0.85rem; }
-  .filters button.active { background: var(--char); color:#fff; border-color: var(--char); }
-  table { width:100%; border-collapse: collapse; background:#fff; border:1px solid var(--line); border-radius: 6px; overflow:hidden; }
-  th, td { text-align:left; padding: 12px 14px; border-bottom:1px solid var(--line); font-size:0.9rem; vertical-align: top; }
-  th { background: #EAE4D3; font-size:0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
-  tr:last-child td { border-bottom:none; }
-  select.status { padding:5px 8px; border-radius:4px; border:1px solid var(--line); }
-  .del { color: var(--orange); background:none; border:none; cursor:pointer; font-size:0.85rem; text-decoration:underline; }
-  .empty { padding: 40px; text-align:center; color:#777; }
-  .muted { color:#888; font-size:0.8rem; }
+  .admin-header .container { display: flex; align-items: center; justify-content: space-between; }
+  .admin-header img { height: 32px; }
+  .admin-wrap { max-width: 1180px; margin: 0 auto; padding: 36px 24px 80px; }
+  .stat-row { display: flex; gap: 18px; margin-bottom: 30px; flex-wrap: wrap; }
+  .stat-box {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px 26px; min-width: 150px;
+  }
+  .stat-box strong { display:block; font-family: var(--font-head); font-size: 1.8rem; color: var(--red); }
+  .stat-box span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray); }
+  .toolbar { display:flex; justify-content: space-between; align-items:center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+  table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 0.88rem; vertical-align: top; }
+  th { background: var(--black); color: var(--white); font-family: var(--font-head); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+  tr:last-child td { border-bottom: none; }
+  select.status-select { padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border); font-size: 0.85rem; }
+  .btn-sm { padding: 7px 14px; font-size: 0.78rem; }
+  .btn-danger { background: var(--red); color: var(--white); border: none; }
+  .btn-danger:hover { background: var(--red-dark); }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--gray); }
 </style>
 </head>
 <body>
-<header>
-  <h1>Abatement &amp; Demolition Specialists &mdash; Leads</h1>
-  <a class="export" href="/admin/api/leads.csv">Export CSV</a>
-</header>
-<main>
-  <div class="stats" id="stats"></div>
-  <div class="filters" id="filters">
-    <button data-status="" class="active">All</button>
-    <button data-status="new">New</button>
-    <button data-status="contacted">Contacted</button>
-    <button data-status="scheduled">Scheduled</button>
-    <button data-status="closed">Closed</button>
+  <div class="admin-header">
+    <div class="container">
+      <img src="../images/logo-white.png" alt="Abatement and Demolition Specialist LLC">
+      <button id="logout-btn" class="btn btn-outline btn-sm" style="border-color:#555;">Log Out</button>
+    </div>
   </div>
-  <table id="leadsTable">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Property Type</th>
-        <th>Project Type</th>
-        <th>Timeline</th>
-        <th>Address</th>
-        <th>Message</th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody id="leadsBody"></tbody>
-  </table>
-</main>
+
+  <div class="admin-wrap">
+    <h1 style="font-size:1.6rem; margin-bottom: 24px;">Assessment Request Leads</h1>
+
+    <div class="stat-row" id="stat-row"></div>
+
+    <div class="toolbar">
+      <div></div>
+      <a href="/admin/api/leads.csv" class="btn btn-dark btn-sm">Export CSV</a>
+    </div>
+
+    <div id="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Property</th>
+            <th>Project</th>
+            <th>Timeline</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="leads-body"></tbody>
+      </table>
+    </div>
+  </div>
 
 <script>
-let currentStatus = '';
-
-async function loadStats() {
-  const res = await fetch('/admin/api/stats');
-  const data = await res.json();
-  if (!data.ok) return;
-  document.getElementById('stats').innerHTML = `
-    <div class="stat"><strong>${data.stats.total}</strong><span>Total leads</span></div>
-    <div class="stat"><strong>${data.stats.new}</strong><span>New</span></div>
-    <div class="stat"><strong>${data.stats.thisWeek}</strong><span>Last 7 days</span></div>
-  `;
-}
-
-async function loadLeads() {
-  const url = currentStatus ? `/admin/api/leads?status=${currentStatus}` : '/admin/api/leads';
-  const res = await fetch(url);
-  const data = await res.json();
-  const body = document.getElementById('leadsBody');
-
-  if (!data.ok || data.leads.length === 0) {
-    body.innerHTML = `<tr><td colspan="10"><div class="empty">No leads yet.</div></td></tr>`;
-    return;
+  async function fetchJSON(url, opts) {
+    const res = await fetch(url, opts);
+    if (res.status === 401) {
+      window.location.href = '/admin/login';
+      return null;
+    }
+    return res.json();
   }
 
-  body.innerHTML = data.leads.map((lead) => `
-    <tr>
-      <td class="muted">${new Date(lead.created_at + 'Z').toLocaleString()}</td>
-      <td><strong>${escapeHtml(lead.name)}</strong></td>
-      <td><a href="tel:${escapeHtml(lead.phone)}">${escapeHtml(lead.phone)}</a></td>
-      <td>${escapeHtml(lead.property_type || '-')}</td>
-      <td>${escapeHtml(lead.project_type || '-')}</td>
-      <td>${escapeHtml(lead.timeline || '-')}</td>
-      <td>${escapeHtml(lead.address || '-')}</td>
-      <td>${escapeHtml(lead.message || '-')}</td>
-      <td>
-        <select class="status" data-id="${lead.id}">
-          ${['new','contacted','scheduled','closed'].map(s => `<option value="${s}" ${s === lead.status ? 'selected' : ''}>${s}</option>`).join('')}
-        </select>
-      </td>
-      <td><button class="del" data-id="${lead.id}">Delete</button></td>
-    </tr>
-  `).join('');
+  function esc(v) {
+    if (v == null) return '';
+    const div = document.createElement('div');
+    div.textContent = v;
+    return div.innerHTML;
+  }
 
-  body.querySelectorAll('select.status').forEach((sel) => {
-    sel.addEventListener('change', async () => {
-      await fetch(`/admin/api/leads/${sel.dataset.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: sel.value }),
+  async function loadStats() {
+    const data = await fetchJSON('/admin/api/stats');
+    if (!data) return;
+    const byStatus = Object.fromEntries((data.byStatus || []).map((s) => [s.status, s.n]));
+    document.getElementById('stat-row').innerHTML = `
+      <div class="stat-box"><strong>${data.total}</strong><span>Total Leads</span></div>
+      <div class="stat-box"><strong>${data.last7Days}</strong><span>Last 7 Days</span></div>
+      <div class="stat-box"><strong>${byStatus.new || 0}</strong><span>New</span></div>
+      <div class="stat-box"><strong>${byStatus.scheduled || 0}</strong><span>Scheduled</span></div>
+    `;
+  }
+
+  async function loadLeads() {
+    const data = await fetchJSON('/admin/api/leads');
+    if (!data) return;
+    const body = document.getElementById('leads-body');
+    if (!data.leads || data.leads.length === 0) {
+      document.getElementById('table-wrap').innerHTML = '<div class="empty-state">No assessment requests yet.</div>';
+      return;
+    }
+    body.innerHTML = data.leads.map((lead) => `
+      <tr data-id="${lead.id}">
+        <td>${esc(new Date(lead.created_at + 'Z').toLocaleDateString())}</td>
+        <td>${esc(lead.name)}</td>
+        <td><a href="tel:${esc(lead.phone)}">${esc(lead.phone)}</a></td>
+        <td>${lead.email ? `<a href="mailto:${esc(lead.email)}">${esc(lead.email)}</a>` : '&mdash;'}</td>
+        <td>${esc(lead.address) || '&mdash;'}</td>
+        <td>${esc(lead.property_type) || '&mdash;'}</td>
+        <td>${esc(lead.project_type) || '&mdash;'}</td>
+        <td>${esc(lead.timeline) || '&mdash;'}</td>
+        <td style="max-width:220px; white-space:pre-wrap;">${esc(lead.message) || '&mdash;'}</td>
+        <td>
+          <select class="status-select" data-id="${lead.id}">
+            ${['new', 'contacted', 'scheduled', 'closed'].map((s) =>
+              `<option value="${s}" ${s === lead.status ? 'selected' : ''}>${s}</option>`
+            ).join('')}
+          </select>
+        </td>
+        <td><button class="btn btn-danger btn-sm delete-btn" data-id="${lead.id}">Delete</button></td>
+      </tr>
+    `).join('');
+
+    body.querySelectorAll('.status-select').forEach((sel) => {
+      sel.addEventListener('change', async () => {
+        await fetchJSON(`/admin/api/leads/${sel.dataset.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: sel.value }),
+        });
+        loadStats();
       });
-      loadStats();
     });
+
+    body.querySelectorAll('.delete-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (!confirm('Delete this request? This cannot be undone.')) return;
+        await fetchJSON(`/admin/api/leads/${btn.dataset.id}`, { method: 'DELETE' });
+        loadLeads();
+        loadStats();
+      });
+    });
+  }
+
+  document.getElementById('logout-btn').addEventListener('click', async () => {
+    await fetch('/admin/api/logout', { method: 'POST' });
+    window.location.href = '/admin/login';
   });
 
-  body.querySelectorAll('.del').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      if (!confirm('Delete this lead?')) return;
-      await fetch(`/admin/api/leads/${btn.dataset.id}`, { method: 'DELETE' });
-      loadLeads();
-      loadStats();
-    });
-  });
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-document.getElementById('filters').addEventListener('click', (e) => {
-  if (e.target.tagName !== 'BUTTON') return;
-  document.querySelectorAll('#filters button').forEach((b) => b.classList.remove('active'));
-  e.target.classList.add('active');
-  currentStatus = e.target.dataset.status;
+  loadStats();
   loadLeads();
-});
-
-loadStats();
-loadLeads();
 </script>
 </body>
 </html>

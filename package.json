@@ -1,7 +1,7 @@
 {
-  "name": "abatement-demolition-specialist-website",
+  "name": "abatement-and-demolition-specialist-website",
   "version": "1.0.0",
-  "description": "Website and lead-capture backend for Abatement & Demolition Specialists, LLC (Augusta, ME)",
+  "description": "Website and lead-capture backend for Abatement and Demolition Specialist LLC (Augusta, ME)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",
+    "cookie-signature": "^1.2.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.0",

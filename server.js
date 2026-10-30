@@ -1,51 +1,38 @@
 // server.js
-// Abatement & Demolition Specialists, LLC — website + backend.
-// Serves the static site and exposes a small API for quote requests and an
-// admin dashboard for managing incoming leads.
+// Abatement and Demolition Specialist LLC — website + backend.
+// Thin entry point: real logic lives in routes/ and lib/.
 
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const helmet = require('helmet');
 
-const adminAuth = require('./lib/adminAuth');
-const quotesRouter = require('./routes/quotes');
-const adminRouter = require('./routes/admin');
+const assessmentRoutes = require('./routes/assessment');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.set('trust proxy', 1); // needed for correct req.ip behind a host's proxy (Render, Railway, etc.)
-
-app.use(helmet({
-  contentSecurityPolicy: false, // the public site uses inline styles/scripts kept simple on purpose; tighten this if you add a CSP later
-}));
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // keep simple for a static-content marketing site
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Admin dashboard (password-only login) — mounted before the public static
-// files so /admin always asks for the password first.
-app.use('/admin/api', adminAuth, adminRouter);
-app.use('/admin', adminAuth, express.static(path.join(__dirname, 'public/admin')));
+// Admin routes are mounted BEFORE the public static files, so /admin always
+// asks for the password first and signed-out API calls get a clean 401.
+app.use('/admin', adminRoutes);
 
-// Public site
-app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Public API
-app.use('/api', quotesRouter);
+app.use('/api', assessmentRoutes);
 
-// Admin dashboard (protected)
-
-app.get('/healthz', (req, res) => res.json({ ok: true }));
-
-// 404 fallback
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'), (err) => {
-    if (err) res.status(404).send('Not found');
-  });
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
-// Basic error handler
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   console.error(err);
@@ -53,6 +40,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Abatement & Demolition Specialists site running on http://localhost:${PORT}`);
-  console.log(`Admin dashboard at http://localhost:${PORT}/admin`);
+  console.log(`Abatement and Demolition Specialist site running on http://localhost:${PORT}`);
 });

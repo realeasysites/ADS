@@ -1,12 +1,11 @@
 // db/database.js
-// SQLite database setup using better-sqlite3 (fast, synchronous, zero-config).
-// The database file is created automatically on first run at db/ads.db.
+// SQLite schema + connection for assessment-request leads.
 
 const path = require('path');
 const Database = require('better-sqlite3');
 
-const DB_PATH = path.join(__dirname, 'ads.db');
-const db = new Database(DB_PATH);
+const dbPath = path.join(__dirname, 'ads.db');
+const db = new Database(dbPath);
 
 db.pragma('journal_mode = WAL');
 
@@ -23,7 +22,7 @@ db.exec(`
     timeline TEXT,
     message TEXT,
     status TEXT NOT NULL DEFAULT 'new',
-    source TEXT DEFAULT 'website',
+    source TEXT,
     ip_address TEXT
   );
 `);

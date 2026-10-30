@@ -1,63 +1,53 @@
+// public/js/main.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Quote form submission
-  const form = document.getElementById('quoteForm');
-  const statusEl = document.getElementById('formStatus');
-  const submitBtn = document.getElementById('quoteSubmit');
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    mobileNav.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => mobileNav.classList.remove('open'))
+    );
+  }
 
+  const form = document.getElementById('assessment-form');
+  const status = document.getElementById('form-status');
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      statusEl.className = 'form-status';
-      statusEl.textContent = '';
+      status.className = '';
+      status.textContent = '';
 
-      const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
-
+      const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
+      const data = Object.fromEntries(new FormData(form).entries());
+
       try {
-        const res = await fetch('/api/quote', {
+        const res = await fetch('/api/assessment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(data),
         });
-        const data = await res.json();
+        const result = await res.json();
 
-        if (res.ok && data.ok) {
-          statusEl.textContent = data.message || 'Thanks! We’ll be in touch shortly.';
-          statusEl.classList.add('show', 'ok');
+        if (res.ok && result.ok) {
+          status.textContent = result.message || "Thanks — we'll be in touch shortly.";
+          status.className = 'success';
           form.reset();
         } else {
-          statusEl.textContent = data.error || 'Something went wrong. Please call us instead.';
-          statusEl.classList.add('show', 'err');
+          status.textContent = result.error || 'Something went wrong. Please call us at (207) 838-6848.';
+          status.className = 'error';
         }
       } catch (err) {
-        statusEl.textContent = 'Network error. Please call or text (207) 838-6848.';
-        statusEl.classList.add('show', 'err');
+        status.textContent = 'Something went wrong. Please call or text us at (207) 838-6848.';
+        status.className = 'error';
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Request My Assessment';
+        submitBtn.textContent = 'Send Message';
       }
     });
   }
