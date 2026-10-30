@@ -170,6 +170,20 @@ nav.main-nav a:hover { color: var(--red); }
   cursor: pointer;
   color: var(--black);
 }
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--off-white);
+  color: var(--black);
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.social-icon svg { width: 18px; height: 18px; fill: currentColor; }
+.social-icon:hover { background: var(--red); color: var(--white); }
 
 /* ---------------- Hero ---------------- */
 .hero {
@@ -552,6 +566,9 @@ footer.site-footer {
 }
 .footer-brand img { height: 40px; margin-bottom: 16px; }
 .footer-brand p { color: #9a9a9a; max-width: 320px; }
+.footer-social { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social .social-icon { background: rgba(255, 255, 255, 0.1); color: var(--white); }
+.footer-social .social-icon:hover { background: var(--red); }
 .footer-col h4 {
   color: var(--white);
   font-size: 0.95rem;

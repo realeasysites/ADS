@@ -44,12 +44,13 @@ Harvey, serving Maine and New Hampshire.
 
 ## Before this goes live
 
-1. **Social media** — no active Facebook/Instagram page was found for this
-   business. If the client has one now, send it over and it can be added
-   to the header/footer per the usual pattern.
-2. **Admin password** — set a real `ADMIN_PASSWORD` before deploying (see
+1. **Admin password** — set a real `ADMIN_PASSWORD` before deploying (see
    below). There is no default password; the login is disabled until one
    is set.
+
+Facebook is linked site-wide (header icon, mobile menu, and footer) to
+https://www.facebook.com/AbatementandDemolition. No Instagram page has
+been found yet for this business — add it the same way if one shows up.
 
 All client photos received so far (7 total) are already in the site. Any
 more that come in later just drop into `public/images/` and get added as
